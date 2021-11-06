@@ -57,3 +57,5 @@ class  makeNode:
                     # data 구조화 리스트 삽입
                     datas.append(data)
         return {"init_val":init, "datas":datas};
+
+
