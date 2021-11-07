@@ -1,5 +1,9 @@
-from matplotlib.pyplot import grid
+# -*- coding: utf-8 -*-
+
+import sys
+import os
 import numpy as np
+import pandas as pd
 
 """
 grid를 위한 class
@@ -51,6 +55,7 @@ class model_world:
 
 """
 수신기 좌표를 만들어주기 위한 class
+[{index:, position:[x, y, z]}]
 """
 # 수신기 좌표를 가지고 있는 class            
 class receiver:
@@ -61,9 +66,18 @@ class receiver:
         receiverZ = input("수신기의 z 값을 입력하세요:")
         receiverX_interval = input("수신기의 x 간격을 입력하세요:")
         receiverY_intervalk = input("수신기의 y 간격을 입력하세요:")
+        receiverMaxX = input("수신기의 최대 x 값을 입력하세요:")
+        receiverMaxY = input('수신기의 최대 y 값을 입력하세요:')
+        # make receiver position
+
+
         
 
     # return receiver position
     def getReceiverPos(self):
+        if len(self.receiverPos) == 0:
+            # make exception
+            raise Exception("need to setting receiver class")
+        # get receiver position
         return self.receiverPos
         
