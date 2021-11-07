@@ -54,6 +54,9 @@ error - 실제 입력된 값과 구한 값의 차이
 -------------------------------------------------------------
 """
 
+    
+
+
 #sample_file = os.getcwd() + "\\sampleData\\Ulsan_2015\\RefMS16161442_IEEESEGY.sgy"
 # os.path.join(os.getcwd(), "sampleData", "Ulsan_2015", "RefMS16161442_IEEESEGY.sgy")
 # save_basePath = os.getcwd() + "\\saved\\"
@@ -97,5 +100,25 @@ for i in range(0, len(np_grid)):
         savedAll.append(savedDic)
 
 sortData = sorted(savedAll, key=lambda data: data["length"])
-
+sortData = set(sortData)
 print("result saved all : {}".format(sortData))
+
+
+baseDir = os.path.join(os.getcwd(), "result")
+
+try:
+    if not os.path.exists(baseDir):
+        os.mkdir(baseDir)
+except Exception:
+    print("make result folder make error")
+output_file = os.path.join(baseDir, "result.csv")
+with open(output_file, 'w', newline="\n") as filewriter:
+    filewriter.write("middlePos\treceiverPos\terror\r\n")
+    for i in range(0, len(sortData)):
+        filewriter.write(str(sortData[i]["middlePos"]))
+        filewriter.write("\t")
+        filewriter.write(str(sortData[i]["receiverPos"]))
+        filewriter.write("\t")
+        filewriter.write(str(sortData[i]["length"]))
+        filewriter.write('\n')
+
