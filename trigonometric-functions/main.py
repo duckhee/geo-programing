@@ -54,12 +54,14 @@ error - 실제 입력된 값과 구한 값의 차이
 -------------------------------------------------------------
 """
 
-sample_file = os.getcwd() + "\\sampleData\\Ulsan_2015\\RefMS16161442_IEEESEGY.sgy"
+#sample_file = os.getcwd() + "\\sampleData\\Ulsan_2015\\RefMS16161442_IEEESEGY.sgy"
+os.path.join(os.getcwd(), "sampleData", "Ulsan_2015", "RefMS16161442_IEEESEGY.sgy")
 save_basePath = os.getcwd() + "\\saved\\"
 
 # grid 생성 입력을 받아서 처리
 world = customModule.model_world()
-
+# receiver 위치 만들기
+receiver_pos = customModule.receiver()
 # grid로 나누어진 값을 가져오기
 get_gridSet = world.makeGrid()
 

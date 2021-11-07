@@ -2,6 +2,7 @@
 
 import numpy as np
 import math
+import pandas as pd
 
 """
  Operation 계산식을 담고 있는 class
