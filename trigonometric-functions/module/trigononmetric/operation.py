@@ -12,11 +12,14 @@ class Operations:
     def __init__(self):
         pass;
     
+    def makeNumpy(self, gridMiddleArray, receiverPosArray):
+        pass;
+
     # 중점과 수신기의 거리 구하기
-    def getNodeScalarLength():
+    def getNodeScalarLength(self):
         pass;
 
     # 길이 비교하여, 길이가 차가 작은 값 반환 - 입력된 실제 값과 구해진 값 차이
-    def comparisonLength():
+    def comparisonLength(self):
         pass;
     

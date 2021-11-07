@@ -55,13 +55,19 @@ error - 실제 입력된 값과 구한 값의 차이
 """
 
 #sample_file = os.getcwd() + "\\sampleData\\Ulsan_2015\\RefMS16161442_IEEESEGY.sgy"
-os.path.join(os.getcwd(), "sampleData", "Ulsan_2015", "RefMS16161442_IEEESEGY.sgy")
-save_basePath = os.getcwd() + "\\saved\\"
+# os.path.join(os.getcwd(), "sampleData", "Ulsan_2015", "RefMS16161442_IEEESEGY.sgy")
+# save_basePath = os.getcwd() + "\\saved\\"
 
 # grid 생성 입력을 받아서 처리
 world = customModule.model_world()
 # receiver 위치 만들기
 receiver_pos = customModule.receiver()
+# get receiver position
+re_positions = receiver_pos.getReceiverPos()
+# get array list
+get_receiverPostionArray = receiver_pos.getReceiverPosArray()
+#print("get receiver pos : {}".format(re_positions))
+#receiver_pos.saveFile()
 # grid로 나누어진 값을 가져오기
 get_gridSet = world.makeGrid()
 
@@ -69,7 +75,27 @@ get_gridSet = world.makeGrid()
 
 # grid의 중점 값 리스트
 get_middlePos = world.getGridMiddlePos()
+# get array list
+get_gridList = world.getArrayMiddlePos()
+# world.saveFile(fileName="test.csv")
+#print("get middle pos : {}".format(get_middlePos))
 
-print("get middle pos : {}".format(get_middlePos))
+# data change numpy array
+np_grid = np.array(get_gridList)
+np_receiverPos = np.array(get_receiverPostionArray)
 
-# get data 
+# save data pos
+savedAll = []
+
+
+# operation get middle pos and receiver scalar x, y
+for i in range(0, len(np_grid)):
+    for j in range(0, len(np_receiverPos)):
+        savedDic = {}
+        dotValue = np_receiverPos[j].dot(np_grid[i])
+        savedDic = {"middlePos":np_grid[i], "receiverPos":np_receiverPos[j], "length":dotValue}
+        savedAll.append(savedDic)
+
+sortData = sorted(savedAll, key=lambda data: data["length"])
+
+print("result saved all : {}".format(sortData))

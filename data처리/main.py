@@ -25,7 +25,7 @@ import csv
 import os
 
 from module.makeNode import makeNode
-from module.moveAvg import moveAvg
+from module.filter import moveAvg
 
 
 def moveAvg():

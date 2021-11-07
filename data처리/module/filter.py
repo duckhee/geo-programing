@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import glob
 import sys
 import pandas as pd
 import numpy as np
@@ -38,7 +39,7 @@ class moveAvg:
         # save file data
         baseName = "filtermoveAVG_" 
         savedName = baseName + fileName
-        
+
 
         
 
