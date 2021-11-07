@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import pandas as pd
 import numpy as np
 
 """
-이동 평균 계사하는 class
+이동 평균 계산하는 class
 """
 
 
@@ -22,9 +23,10 @@ class moveAvg:
         self.avgData.clear();
     
     # file save make folder
-    def saveFile(self, fileName, folderName="./filteringDone"):
+    def saveFile(self, fileName, folderName="./filterMoveAVG"):
         basePath = os.getcwd()
-        folderPath = basePath + folderName
+        # make folder path
+        folderPath = os.path.join(basePath, folderName)
         # folder make
         try:
             if not os.path.exists(folderPath):
@@ -33,7 +35,10 @@ class moveAvg:
         except OSError:
             print("make folder error")
         
-        # save file data 
+        # save file data
+        baseName = "filtermoveAVG_" 
+        savedName = baseName + fileName
+        
 
         
 

@@ -55,8 +55,14 @@ class model_world:
 # 수신기 좌표를 가지고 있는 class            
 class receiver:
     def __init__(self):
+        self.receiverPos = []
         pass
 
+    # make receiver position
     def makeReceiverPoint(self):
-        receiverX = input("수신기의 x 좌표를 입력하세요:")
-        receiverY = input("수신기의 y 좌표를 입력하세요:")
+        receiverX = input("수신기의 초기 x 좌표를 입력하세요:")
+        receiverY = input("수신기의 초기 y 좌표를 입력하세요:")
+        receiverZ = input("수신기의 z 값을 입력하세요:")
+        receiverX_interval = input("수신기의 x 간격을 입력하세요:")
+        receiverY_intervalk = input("수신기의 y 간격을 입력하세요:")
+        
