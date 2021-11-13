@@ -63,4 +63,6 @@ class  makeNode:
                     datas.append(data)
         return {"init_val":init, "datas":datas};
 
-
+    # pandas data set change
+    def dataFrame(self):
+        pass

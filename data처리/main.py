@@ -54,3 +54,29 @@ getFirstData = newNode.makeNodeStructure(sampmle_file)
 print("read node number : {}, max distance : {}, node distance interval : {}, all data count : {}".format(node_number, all_range, node_distance_interval, data_number))
 
 # print("mapping data ::: {}".format(datas))
+
+#
+#print("data is {}".format(getFirstData["datas"]))
+
+# get send voltage list
+getSendVoltage = []
+# get receive voltage list
+getReceiveVoltage = []
+# get difference voltage 
+getdifVoltage = []
+# get change array list
+for index, data in enumerate(getFirstData["datas"]):
+    getSendVoltage.append(data['voltage_data']['send_voltage'])
+    getReceiveVoltage.append(data['voltage_data']['reception_voltage'])
+    getdifVoltage.append(data['voltage_data']['send_voltage'] - data['voltage_data']['reception_voltage'])
+
+
+pandasData = pd.DataFrame({"voltageSend":getSendVoltage, "voltageReceive":getReceiveVoltage, "difVoltage":getdifVoltage})
+
+getSendVoltage = np.array(getSendVoltage)
+getReceiveVoltage = np.array(getReceiveVoltage)
+getdifVoltage = np.array(getdifVoltage)
+# print('voltage send : {}'.format(getSendVoltage))
+# print("voltage send : {send} \nreceive voltage : {reception} \ndiffernce voltage : {dif}".format(send=getSendVoltage, reception=getReceiveVoltage, dif=getdifVoltage))
+
+print("\nPandas Data Frame : {}".format(pandasData))
