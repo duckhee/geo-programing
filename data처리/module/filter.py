@@ -53,7 +53,8 @@ class moveAvg:
                 self.index = index
             else:
                 # 이동 평균 값을 구하는 공식
-                tempMoveAvg = self.data[index - 5:]
+                tempMoveAvg = sum(self.data[index - 5:])
+                
                 moveAvgData.append(tempMoveAvg / self.avgMax)
         # 이동 평균 값 저장
         self.avgData = moveAvgData

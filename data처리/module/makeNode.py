@@ -9,6 +9,8 @@ import pandas as pd
 class  makeNode:
     def __init__(self, filePath=""):
         self.filePath = ""
+        self.initData = {}
+        
     
     def makeNodeStructure(self, filePath=""):
         path = "";
@@ -56,13 +58,28 @@ class  makeNode:
                     reception_node = {"x":int(data[2]), "y":int(data[3])}
                     # print("get reception voltage node : {}".format(reception_node))
                     # 송신 전압 과 수신 전압
-                    voltage = {"send_voltage":float(data[4]), "reception_voltage":float(data[5])}
+                    voltage = {"voltageMeasurement":float(data[4]), "registeMeasurment":float(data[5])}
                     # print("get voltage send and reception : {}".format(voltage))
                     data = {"send_node_pos":send_node, "reception_node_pos":reception_node, "voltage_data":voltage}
                     # data 구조화 리스트 삽입
                     datas.append(data)
+                    
+        self.initData = {"init_val":init, "datas":datas}
         return {"init_val":init, "datas":datas};
 
     # pandas data set change
     def dataFrame(self):
-        pass
+        getSendNodePos = []
+        getRecNodePos = []
+        getVoltages = []
+        getReceiveVoltage = []
+        
+        for index, data in enumerate(self.initData["datas"]):
+            getVoltages.append(data['voltage_data']['voltageMeasurement'])
+            getReceiveVoltage.append(data['voltage_data']['registeMeasurment'])
+            getSendNodePos.append(data['send_node_pos'])
+            getRecNodePos.append(data["reception_node_pos"])
+        
+        pandasData = pd.DataFrame({"voltageMeasurement":getVoltages, "registeMeasurment":getReceiveVoltage, "sendNodePos":getSendNodePos, "receiveNodePos":getRecNodePos})
+        self.pandasData = pandasData;
+        return pandasData;
