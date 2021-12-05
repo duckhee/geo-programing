@@ -100,7 +100,7 @@ for i in range(0, len(np_grid)):
         savedAll.append(savedDic)
 
 sortData = sorted(savedAll, key=lambda data: data["length"])
-sortData = set(sortData)
+#sortData = set(sortData)
 print("result saved all : {}".format(sortData))
 
 

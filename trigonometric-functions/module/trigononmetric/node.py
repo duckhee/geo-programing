@@ -7,6 +7,7 @@ import pandas as pd
 
 """
 grid를 위한 class
+시간 값 입력 받기
 """
 class model_world:
     def __init__(self):
@@ -16,6 +17,8 @@ class model_world:
         speed = input("속도를 입력하세요:")
         x = input("전체 크기의 x 값을 입력 하세요:")
         y = input("전체 크기의 y 값을 입력 하세요:")
+#        z = input("전체 크기의 z(h) 값을 입력 하세요:")
+
         gridX = input("나눌 X 좌표의 크기를 입력하세요:")
         gridY = input("나눌 Y 좌표의 크기를 입력하세요:")
         self.initValue = {"x":int(x), "y":int(y), "gridX":int(gridX), "gridY":int(gridY), "speed":int(speed)}
